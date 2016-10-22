@@ -1,0 +1,283 @@
+// Flexible Box Layout
+
+// IE10 supports the 2012 spec
+// http://www.w3.org/TR/2012/WD-css3-flexbox-20120322/
+//
+// IE11+, Firefox, Safari and Chrome support the current spec
+// http://dev.w3.org/csswg/css-flexbox/
+//
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Flex Containers
+////////////////////////////////////////////////////////////////////////////////
+
+//
+// Applies to flex containers
+//
+
+.flex(@value: flex) when (@value = flex) {
+    /* display: -ms-flexbox; */
+    display: -webkit-flex;
+    display: flex;
+}
+
+.flex(@value) when (@value = inline-flex) {
+    /* display: -ms-inline-flexbox; */
+    display: -webkit-inline-flex;
+    display: inline-flex;
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Ordering and Orientation
+////////////////////////////////////////////////////////////////////////////////
+
+//
+// flex-direction
+//
+// Applies to flex containers
+//
+// Values: row (default), row-reverse, column, column-reverse
+//
+
+.flex-direction(@value: row) {
+    /* -ms-flex-direction: @value; */
+    -webkit-flex-direction: @value;
+    flex-direction: @value;
+}
+
+
+//
+// flex-wrap
+//
+// Applies to flex containers
+//
+// Values: nowrap (default), wrap, wrap-reverse
+//
+
+.flex-wrap(@value: nowrap) {
+    /* -ms-flex-wrap: @value; */
+    -webkit-flex-wrap: @value;
+    flex-wrap: @value;
+}
+
+
+//
+// flex-flow
+//
+// Applies to flex containers
+//
+// Values: <flex-direction> || <flex-wrap>
+//
+
+.flex-flow-props(@value) {
+    /* -ms-flex-flow: @value; */
+    -webkit-flex-flow: @value;
+    flex-flow: @value;
+}
+
+.flex-flow() {
+    .flex-flow-props(row nowrap);
+}
+
+.flex-flow(@value; ...) {
+    .flex-flow-props(@arguments);
+}
+
+
+//
+// flex-order
+//
+// Applies to flex items
+//
+// Values: <integer>
+//
+
+.flex-order(@value: 0) {
+    /* -ms-flex-order: @value; */
+    -webkit-order: @value;
+    order: @value;
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Flexibility
+////////////////////////////////////////////////////////////////////////////////
+
+// The 2012 spec (IE10) does not support flex-grow, flex-shrink and flex-basis as
+// individual properties. They have to be configured through the all-in-one flex
+// property.
+
+//
+// flex
+//
+// Applies to flex items
+//
+
+.flex-flex(@flex-grow: 1, @flex-shrink: 1, @flex-basis: 0%) {
+    /* -ms-flex: @arguments; */
+    -webkit-flex: @arguments;
+    flex: @arguments;
+    // Bugfix Chrome and Firefox:
+    // When vertically resizing the window down, a flexed container's scrollbars
+    // resize with the window. But when the window is resized up, the flexed
+    // container does not resize correctly and the scrollbars become hidden.
+    min-height: 0;
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Alignment
+////////////////////////////////////////////////////////////////////////////////
+
+//
+// justify-content
+//
+// Applies to flex containers
+//
+// Values: flex-start (default), flex-end, center, space-between, space-around
+//
+
+.flex-justify-content-ie10(@value) {
+    -ms-flex-pack: @value;
+}
+
+.flex-justify-content-spec(@value) {
+    -webkit-justify-content: @value;
+    justify-content: @value;
+}
+
+.flex-justify-content(@value: flex-start) when (@value = flex-start) {
+    /* .flex-justify-content-ie10(start); */
+    .flex-justify-content-spec(@value);
+}
+
+.flex-justify-content(@value) when (@value = flex-end) {
+    /* .flex-justify-content-ie10(end); */
+    .flex-justify-content-spec(@value);
+}
+
+.flex-justify-content(@value) when (@value = space-between) {
+    /* .flex-justify-content-ie10(justify); */
+    .flex-justify-content-spec(@value);
+}
+
+.flex-justify-content(@value) when (@value = space-around) {
+    /* .flex-justify-content-ie10(distribute); */
+    .flex-justify-content-spec(@value);
+}
+
+.flex-justify-content(@value) when (default()) {
+    /* .flex-justify-content-ie10(@value); */
+    .flex-justify-content-spec(@value);
+}
+
+
+//
+// align-items
+//
+// Applies to flex containers
+//
+// Values: flex-start, flex-end, center, baseline, stretch (default)
+//
+
+.flex-align-items-ie10(@value) {
+    -ms-flex-align: @value;
+}
+
+.flex-align-items-spec(@value) {
+    -webkit-align-items: @value;
+    align-items: @value;
+}
+
+.flex-align-items(@value) when (@value = flex-start) {
+    /* .flex-align-items-ie10(start); */
+    .flex-align-items-spec(@value);
+}
+
+.flex-align-items(@value) when (@value = flex-end) {
+    /* .flex-align-items-ie10(end); */
+    .flex-align-items-spec(@value);
+}
+
+.flex-align-items(@value: stretch) when (default()) {
+    /* .flex-align-items-ie10(@value); */
+    .flex-align-items-spec(@value);
+}
+
+
+//
+// align-self
+//
+// Applies to flex items
+//
+// Values: auto (default), flex-start, flex-end, center, baseline, stretch
+//
+
+.flex-align-self-ie10(@value) {
+    -ms-flex-item-align: @value;
+}
+
+.flex-align-self-spec(@value) {
+    -webkit-align-self: @value;
+    align-self: @value;
+}
+
+.flex-align-self(@value) when (@value = flex-start) {
+    /* .flex-align-self-ie10(start); */
+    .flex-align-self-spec(@value);
+}
+
+.flex-align-self(@value) when (@value = flex-end) {
+    /* .flex-align-self-ie10(end); */
+    .flex-align-self-spec(@value);
+}
+
+.flex-align-self(@value: auto) when (default()) {
+    /* .flex-align-self-ie10(@value); */
+    .flex-align-self-spec(@value);
+}
+
+
+//
+// align-content
+//
+// Applies to flex containers
+//
+// Values: flex-start, flex-end, center, space-between, space-around, stretch (default)
+//
+
+.flex-align-content-ie10(@value) {
+    -ms-flex-line-pack: @value;
+}
+
+.flex-align-content-spec(@value) {
+    -webkit-align-content: @value;
+    align-content: @value;
+}
+
+.flex-align-content(@value) when (@value = flex-start) {
+    /* .flex-align-content-ie10(start); */
+    .flex-align-content-spec(@value);
+}
+
+.flex-align-content(@value) when (@value = flex-end) {
+    /* .flex-align-content-ie10(end); */
+    .flex-align-content-spec(@value);
+}
+
+.flex-align-content(@value) when (@value = space-between) {
+    /* .flex-align-content-ie10(justify); */
+    .flex-align-content-spec(@value);
+}
+
+.flex-align-content(@value) when (@value = space-around) {
+    /* .flex-align-content-ie10(distribute); */
+    .flex-align-content-spec(@value);
+}
+
+.flex-align-content(@value: stretch) when (default()) {
+    /* .flex-align-content-ie10(@value); */
+    .flex-align-content-spec(@value);
+}
