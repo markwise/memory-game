@@ -67,7 +67,7 @@ gulp.task('styles', () =>
     ])
         .pipe(plugins.sourcemaps.init())
             .pipe(plugins.concat(`app${uuid}.css`))
-            .pipe(plugins.less())
+            .pipe(plugins.less().on('error', plugins.util.log))
             .pipe(plugins.if(env === 'production', plugins.cssnano()))
         .pipe(plugins.sourcemaps.write('.'))
         .pipe(plugins.size({title: 'css'}))

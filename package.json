@@ -26,6 +26,7 @@
     "gulp-replace": "^0.5.4",
     "gulp-size": "^2.1.0",
     "gulp-sourcemaps": "^2.1.1",
+    "gulp-util": "^3.0.7",
     "node-uuid": "^1.4.7",
     "nunjucks-loader": "^2.4.4",
     "run-sequence": "^1.2.2",
