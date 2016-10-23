@@ -60,6 +60,7 @@ gulp.task('html', () =>
 
 gulp.task('styles', () =>
     gulp.src([
+        'node_modules/normalize.css/normalize.css',
         `${paths.styles}/flexbox.less`,
         `${paths.styles}/base.less`,
         `${paths.src}/views/**/*.{less,css}`,
