@@ -86,7 +86,7 @@ gulp.task('scripts', (done) => {
             done(err);
         } else {
             stats.compilation.fileDependencies.forEach((item) => {
-                console.log(chalk.green(item));
+                //console.log(chalk.green(item));
             });
             done();
         }
