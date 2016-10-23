@@ -1,0 +1,63 @@
+.Card {
+    @cols: 6;
+    @width: 100% / @cols;
+    @size: @width - 1.5%;
+    @margin: @width - @size;
+
+    position: relative;
+    width: @size;
+    padding-bottom: @size;
+    cursor: default;
+    perspective: 700px;
+    opacity: 1;
+    transition: opacity .5s;
+
+    &:nth-child(n+7) {
+        margin-top: @margin;
+    }
+
+    &--selected {
+        pointer-events: none;
+    }
+
+    &--matched {
+        opacity: 0;
+    }
+}
+
+.Card-content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.25);
+
+    .Card--selected & {
+        transform: rotateY(180deg);
+    }
+}
+
+.Card-face {
+    .flex();
+    .flex-justify-content(center);
+    .flex-align-items(center);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    backface-visibility: hidden;
+}
+
+.Card-front {
+    background: #fff;
+    //transform: rotateY(180deg);
+}
+
+.Card-back {
+    background: #7f8b90;
+    transform: rotateY(180deg);
+}
