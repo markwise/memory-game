@@ -43,7 +43,8 @@ export default function (uuid) {
         resolve: {
             extensions: ['', '.js'],
             alias: {
-                views: paths.views,
+                scripts: paths.scripts,
+                views:   paths.views,
             },
         },
     };
