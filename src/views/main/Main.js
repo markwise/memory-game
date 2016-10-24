@@ -3,6 +3,7 @@ import Events from 'scripts/events';
 import CardManager from 'views/cardManager/CardManager';
 import GuessCount from 'views/guessCount/GuessCount';
 import MatchCount from 'views/matchCount/MatchCount';
+import HighScore from  'views/highScore/HighScore';
 import template from './main.njk';
 
 
@@ -17,6 +18,7 @@ export default Backbone.View.extend({
         this._cardManager = new CardManager({cardDeck: cardDeck});
         this._guessCount = new GuessCount();
         this._matchCount = new MatchCount();
+        this._highScore = new HighScore();
     },
 
     render() {
@@ -26,6 +28,7 @@ export default Backbone.View.extend({
         let mainStatus = el.querySelector('.Main-status');
         mainStatus.appendChild(this._guessCount.render().el);
         mainStatus.appendChild(this._matchCount.render().el);
+        mainStatus.appendChild(this._highScore.render().el);
         Events.trigger('NEW_GAME');
     }
 });
