@@ -29,7 +29,7 @@ export default Backbone.View.extend({
                 let cardId2 = selectedCards[1].getCardId();
 
                 if (cardId1 === cardId2) {
-                    //Events.trigger('UPDATE_MATCH_COUNT');
+                    Events.trigger('INCREMENT_MATCH_COUNT');
 
                     setTimeout(() => {
                         this.__hideMatchedCards();
