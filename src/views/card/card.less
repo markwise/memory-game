@@ -62,11 +62,15 @@
     box-shadow: 0 1px 3px 0 rgba(0,0,0,.25);
     border-radius: 5px;
     backface-visibility: hidden;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #333;
 }
 
 .Card-front {
     background: #fff;
-    //transform: rotateY(180deg);
+    // Comment transform for testing
+    transform: rotateY(180deg);
 }
 
 .Card-back {
@@ -75,5 +79,6 @@
                 repeat-x
                 center bottom;
     background-size: 12px;
-    transform: rotateY(180deg);
+    // Uncomment transform for testing
+    //transform: rotateY(180deg);
 }
