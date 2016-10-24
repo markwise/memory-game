@@ -19,6 +19,14 @@ export default Backbone.View.extend({
         this._guessCount = new GuessCount();
         this._matchCount = new MatchCount();
         this._highScore = new HighScore();
+
+        this.listenTo(Events, 'GAME_OVER', () => {
+            let guessCount = this._guessCount.getCount();
+
+            if (guessCount < this._highScore.getScore()) {
+                Events.trigger('UPDATE_HIGHSCORE', guessCount);
+            }
+        });
     },
 
     render() {

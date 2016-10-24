@@ -22,5 +22,9 @@ export default Backbone.View.extend({
         });
 
         return this;
+    },
+
+    getCount() {
+        return this._count;
     }
 });

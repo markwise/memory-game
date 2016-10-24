@@ -25,6 +25,7 @@ export default Backbone.View.extend({
 
             if (selectedCards.length >= 2) {
                 this.__toggleCardEvents();
+                Events.trigger('INCREMENT_GUESS_COUNT');
                 let cardId1 = selectedCards[0].getCardId();
                 let cardId2 = selectedCards[1].getCardId();
 
@@ -44,8 +45,6 @@ export default Backbone.View.extend({
                         this.__toggleCardEvents();
                     }, 2000);
                 }
-
-                Events.trigger('INCREMENT_GUESS_COUNT');
             }
         });
     },

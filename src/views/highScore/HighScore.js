@@ -6,7 +6,7 @@ export default Backbone.View.extend({
     className: 'HighScore',
 
     initialize() {
-        this._score = localStorage.getItem('highScore') || 0;
+        this._score = Number(localStorage.getItem('highScore')) || 999;
 
         this.listenTo(Events, 'UPDATE_HIGHSCORE', (score) => {
             this._score = score;
@@ -23,5 +23,9 @@ export default Backbone.View.extend({
         });
 
         return this;
+    },
+
+    getScore() {
+        return this._score;
     }
 });

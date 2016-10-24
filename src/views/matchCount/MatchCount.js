@@ -2,6 +2,8 @@ import Backbone from 'backbone';
 import Events from 'scripts/events';
 import template from './matchCount.njk';
 
+const totalMatches = 12;
+
 export default Backbone.View.extend({
     className: 'MatchCount',
 
@@ -11,6 +13,10 @@ export default Backbone.View.extend({
         this.listenTo(Events, 'INCREMENT_MATCH_COUNT', () => {
             this._count += 1;
             this.render();
+
+            if (this._count === totalMatches) {
+                Events.trigger('GAME_OVER');
+            }
         });
     },
 

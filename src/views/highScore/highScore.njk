@@ -1,1 +1,3 @@
-<span class="HighScore-label">Best: {{data.score}} guesses</span>
+{% if data.score < 999 %}
+    <span class="HighScore-label">Best: {{data.score}} guesses</span>
+{% endif %}
