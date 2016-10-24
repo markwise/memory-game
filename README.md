@@ -10,6 +10,8 @@ download the memory-game repository. From within the memory-game directory, run
 the command `gulp serve`. Follow the command output, but it should be available
 to view on localhost:3000.
 
+It only works in chrome at the moment.
+
 ## Testing
 
 To cheat for testing, open src/views/card/card.less and comment the property
