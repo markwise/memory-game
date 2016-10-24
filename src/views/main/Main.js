@@ -42,6 +42,7 @@ export default Backbone.View.extend({
         mainStatus.appendChild(this._matchCount.el);
         mainStatus.appendChild(this._highScore.render().el);
         Events.trigger('NEW_GAME');
+        return this;
     },
 
     __handleNewGame() {
