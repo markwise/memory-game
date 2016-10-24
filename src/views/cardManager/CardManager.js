@@ -45,7 +45,7 @@ export default Backbone.View.extend({
                     }, 2000);
                 }
 
-                //Events.trigger('UPDATE_GUESS_COUNT');
+                Events.trigger('INCREMENT_GUESS_COUNT');
             }
         });
     },
