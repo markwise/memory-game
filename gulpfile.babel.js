@@ -137,6 +137,7 @@ gulp.task('serve', (done) => {
         () => {
             browserSync.init({
                 server: paths.dist,
+                port: 3000,
                 logPrefix: 'memory-game',
                 notify: false,
                 minify: false,
