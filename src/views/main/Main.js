@@ -14,6 +14,10 @@ let cardDeck = cards.concat(cards);
 export default Backbone.View.extend({
     className: 'Main',
 
+    events: {
+        'click .newGameBtn': '__handleNewGame'
+    },
+
     initialize() {
         this._cardManager = new CardManager({cardDeck: cardDeck});
         this._guessCount = new GuessCount();
@@ -34,9 +38,13 @@ export default Backbone.View.extend({
         el.innerHTML = template.render();
         el.querySelector('.Main-content').appendChild(this._cardManager.el);
         let mainStatus = el.querySelector('.Main-status');
-        mainStatus.appendChild(this._guessCount.render().el);
-        mainStatus.appendChild(this._matchCount.render().el);
+        mainStatus.appendChild(this._guessCount.el);
+        mainStatus.appendChild(this._matchCount.el);
         mainStatus.appendChild(this._highScore.render().el);
+        Events.trigger('NEW_GAME');
+    },
+
+    __handleNewGame() {
         Events.trigger('NEW_GAME');
     }
 });

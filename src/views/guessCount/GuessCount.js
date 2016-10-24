@@ -8,6 +8,11 @@ export default Backbone.View.extend({
     initialize() {
         this._count = 0;
 
+        this.listenTo(Events, 'NEW_GAME', () => {
+            this._count = 0;
+            this.render();
+        });
+
         this.listenTo(Events, 'INCREMENT_GUESS_COUNT', () => {
             this._count += 1;
             this.render();
